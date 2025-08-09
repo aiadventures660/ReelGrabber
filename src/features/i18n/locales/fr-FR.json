@@ -1,4 +1,13 @@
 {
+  "blog": {
+    "title": "Guides & Tutoriels",
+    "subtitle": "Apprenez à télécharger du contenu Instagram avec nos guides complets et nos conseils.",
+    "readMore": "Lire la suite",
+    "ctaTitle": "Prêt à Télécharger du Contenu Instagram ?",
+    "ctaDescription": "Essayez ReelGrabber maintenant - c'est gratuit, rapide et sécurisé !",
+    "ctaButton": "Commencer à Télécharger",
+    "backToBlog": "Retour au Blog"
+  },
   "components": {
     "instagramForm": {
       "inputs": {
@@ -13,6 +22,7 @@
       },
       "serverErrors": {
         "notFound": "Le message que vous recherchez n'a pas été trouvé",
+        "postNotAccessible": "Cette publication n'est pas accessible. Elle peut être privée, supprimée ou vous n'avez pas la permission de la voir.",
         "notVideo": "Ce message ne contient pas de vidéo",
         "tooManyRequests": "Trop de requêtes, veuillez réessayer plus tard",
         "serverError": "Le serveur est indisponible, veuillez réessayer plus tard"
@@ -31,9 +41,14 @@
         "themeLabel": "Thème",
         "localeLabel": "Langue",
         "links": {
+          "home": "Accueil",
           "features": "Fonctionnalités",
           "howItWorks": "Comment ça marche",
-          "frequentlyAsked": "FAQ"
+          "frequentlyAsked": "FAQ",
+          "blog": "Blog",
+          "privacy": "Politique de Confidentialité",
+          "terms": "Conditions d'Utilisation",
+          "disclaimer": "Avertissement"
         }
       },
       "footer": {

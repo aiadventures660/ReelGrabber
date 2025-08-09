@@ -6,15 +6,16 @@ import { getLocale } from "next-intl/server";
 import { BlogPostContent } from "@/components/blog-post-content";
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const locale = await getLocale();
+  const resolvedParams = await params;
   const blogPosts = getBlogPostsByLocale(locale);
-  const post = blogPosts.find(p => p.slug === params.slug);
+  const post = blogPosts.find(p => p.slug === resolvedParams.slug);
   
   if (!post) {
     return {

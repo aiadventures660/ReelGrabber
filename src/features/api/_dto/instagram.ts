@@ -87,8 +87,8 @@ export type XdtShortcodeMediaDto = {
   viewer_can_reshare: boolean;
   is_ad: boolean;
   edge_web_media_to_related_media: EdgeMediaToCaptionClassDto;
-  coauthor_producers: any[];
-  pinned_for_users: any[];
+  coauthor_producers: Array<any>;
+  pinned_for_users: Array<any>;
 };
 
 export type ClipsMusicAttributionInfoDto = {

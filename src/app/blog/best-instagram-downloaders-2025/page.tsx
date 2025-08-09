@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Star, Check, X, Award, Shield, Zap, Download, Smartphone, Globe, Clock } from "lucide-react";
+import { ArrowLeft, Star, Check, X, Award, Shield, Zap, Download, Smartphone } from "lucide-react";
 import { Header } from "../../(home)/_components/header";
 import { Footer } from "../../(home)/_components/footer";
 
@@ -48,7 +48,7 @@ export default function BestInstagramDownloaders2025() {
           </h1>
           
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            We tested 15+ Instagram downloaders to find the best tools for 2025. Here's our comprehensive comparison of features, speed, and reliability.
+            We tested 15+ Instagram downloaders to find the best tools for 2025. Here&apos;s our comprehensive comparison of features, speed, and reliability.
           </p>
         </header>
 
@@ -323,7 +323,7 @@ export default function BestInstagramDownloaders2025() {
                   <Award className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">ReelGrabber - Editor's Choice</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">ReelGrabber - Editor&apos;s Choice</h3>
                   <div className="flex items-center gap-2">
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
@@ -336,7 +336,7 @@ export default function BestInstagramDownloaders2025() {
               </div>
               
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                ReelGrabber sets the gold standard for Instagram downloaders in 2025. With its clean interface, blazing-fast downloads, and zero advertisements, it's the clear winner in our comparison.
+                ReelGrabber sets the gold standard for Instagram downloaders in 2025. With its clean interface, blazing-fast downloads, and zero advertisements, it&apos;s the clear winner in our comparison.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -418,7 +418,7 @@ export default function BestInstagramDownloaders2025() {
                   </div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Works for basic downloads but suffers from slow speeds and popup ads. Quality is limited to 720p, which isn't ideal for modern content consumption.
+                  Works for basic downloads but suffers from slow speeds and popup ads. Quality is limited to 720p, which isn&apos;t ideal for modern content consumption.
                 </p>
               </div>
             </div>
@@ -571,7 +571,7 @@ export default function BestInstagramDownloaders2025() {
               Our Recommendation: ReelGrabber
             </h2>
             <p className="text-purple-100 mb-6 text-lg">
-              After extensive testing, ReelGrabber is the clear winner for 2025. It combines speed, quality, and safety in a package that's simply unmatched by competitors.
+              After extensive testing, ReelGrabber is the clear winner for 2025. It combines speed, quality, and safety in a package that&apos;s simply unmatched by competitors.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-6">
               <span className="bg-white/20 rounded-full px-4 py-2 text-sm">⚡ Fastest Downloads</span>

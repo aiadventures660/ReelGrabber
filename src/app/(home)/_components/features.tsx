@@ -2,7 +2,7 @@ import React from "react";
 
 import { useTranslations } from "next-intl";
 
-import { CheckCircle, Shield, Image, Zap, Sparkles, Heart, Monitor } from "lucide-react";
+import { CheckCircle, Shield, Image, Zap, Sparkles, Heart } from "lucide-react";
 
 import { homeSections } from "@/lib/constants";
 

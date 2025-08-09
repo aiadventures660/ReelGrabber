@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage({}: BlogPostPageProps) {
   return (
     <div className="relative flex min-h-screen flex-col">
       <Header />

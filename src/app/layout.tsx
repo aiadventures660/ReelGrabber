@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans as RootFont } from "next/font/google";
+import Script from "next/script";
 
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/features/theme/theme-provider";
@@ -38,20 +39,18 @@ export default async function RootLayout({
         <link rel="manifest" href="/web.manifest.json" />
         
         {/* Google Analytics */}
-        <script
-          async
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XWJFT82VR6"
+          strategy="afterInteractive"
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XWJFT82VR6');
-            `,
-          }}
-        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XWJFT82VR6');
+          `}
+        </Script>
         <StructuredData />
       </head>
       <body className={cn("antialiased", geistSans.className)} suppressHydrationWarning>

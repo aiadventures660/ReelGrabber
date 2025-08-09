@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Download, Copy, CheckCircle, AlertCircle } from "lucide-react";
+import { ArrowLeft, Download, CheckCircle, AlertCircle } from "lucide-react";
 import { Header } from "../../(home)/_components/header";
 import { Footer } from "../../(home)/_components/footer";
 

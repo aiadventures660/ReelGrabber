@@ -107,7 +107,7 @@ export function HowItWorks() {
             {/* Vertical connecting line */}
             <div className="absolute top-0 bottom-16 left-8 w-0.5 bg-gradient-to-b from-purple-300 to-pink-300"></div>
 
-            {steps.map((step, index) => {
+            {steps.map((step) => {
               const Icon = step.icon;
               return (
                 <div key={step.number} className="relative flex items-start space-x-6">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useParams, notFound } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Download } from "lucide-react";
 import { getBlogPostsByLocale, BlogPost } from "@/lib/blog-data";
@@ -42,7 +42,7 @@ export function BlogPostContent() {
   }
 
   // Dynamic content based on post and locale
-  const getBlogContent = (post: BlogPost) => {
+  const getBlogContent = (_post: BlogPost) => {
     return (
       <div className="prose prose-lg max-w-none">
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg dark:bg-gray-800/80 mb-8">

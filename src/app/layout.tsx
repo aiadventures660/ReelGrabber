@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/features/theme/theme-provider";
 import { LocaleProvider } from "@/features/i18n/locale-provider";
 import { ReactQueryProvider } from "@/features/react-query/react-query-provider";
+import { StructuredData } from "@/components/structured-data";
 
 import { cn } from "@/lib/utils";
 import { siteMetadata } from "@/lib/site";
@@ -29,7 +30,25 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
-      <body className={cn("antialiased", geistSans.className)}>
+      <head>
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-XWJFT82VR6"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XWJFT82VR6');
+            `,
+          }}
+        />
+        <StructuredData />
+      </head>
+      <body className={cn("antialiased", geistSans.className)} suppressHydrationWarning>
         <LocaleProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <ReactQueryProvider>

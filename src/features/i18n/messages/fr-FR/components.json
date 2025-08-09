@@ -12,6 +12,7 @@
     },
     "serverErrors": {
       "notFound": "Le message que vous recherchez n'a pas été trouvé",
+      "postNotAccessible": "Cette publication n'est pas accessible. Elle peut être privée, supprimée ou vous n'avez pas la permission de la voir.",
       "notVideo": "Ce message ne contient pas de vidéo",
       "tooManyRequests": "Trop de requêtes, veuillez réessayer plus tard",
       "serverError": "Le serveur est indisponible, veuillez réessayer plus tard"

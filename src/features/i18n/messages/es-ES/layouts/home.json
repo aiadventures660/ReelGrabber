@@ -3,9 +3,14 @@
     "themeLabel": "Tema",
     "localeLabel": "Idioma",
     "links": {
+      "home": "Inicio",
       "features": "Características",
       "howItWorks": "Cómo funciona",
-      "frequentlyAsked": "FAQ"
+      "frequentlyAsked": "FAQ",
+      "blog": "Blog",
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio",
+      "disclaimer": "Descargo de Responsabilidad"
     }
   },
   "footer": {

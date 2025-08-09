@@ -1,44 +1,40 @@
-# Gram Grabberz (Instagram Video Downloader)
+# ReelGrabber
+# ReelGrabber (Instagram Video & Photo Downloader)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This project is an educational demonstration of building a web application to
-download Instagram videos using Next.js. The primary goal is to explore modern
-web development techniques, including server-side rendering/components, API
-interaction (potentially via Next.js API routes), state management, form
-handling, and building a clean UI with Shadcn/ui.
+A modern, fast, and user-friendly Instagram downloader built with Next.js 15. 
+Download Instagram videos, photos, reels, and carousel posts with ease. 
+Features multi-language support, modern UI design, and comprehensive SEO optimization.
 
 **Disclaimer:** This tool is intended for educational purposes only. Downloading
-videos from Instagram may violate their Terms of Service. Please respect
+content from Instagram may violate their Terms of Service. Please respect
 copyright laws and the platform's policies. Use this tool responsibly and only
 for content you have the right to download.
 
-Website Preview: [gram-grabberz.vercel.app](https://gram-grabberz.vercel.app)
+🌐 **Live Demo:** [ReelGrabber.app](https://reelgrabber.app)
 
 ![website preview](https://github.com/user-attachments/assets/74e5db68-b5b5-425b-8734-81bbaedeb3c4)
 
 ## ✨ Features
 
-- **Download Instagram Videos:** Input an Instagram video URL to fetch and
-  download the video file. (Note: Functionality depends on the backend
-  implementation, which isn't detailed here but is a core part of the learning
-  experience).
-- **Modern Frontend Stack:** Built with the latest Next.js (App Router).
-- **Clean UI:** User interface crafted using [Shadcn/ui](https://ui.shadcn.com/)
-  components and styled with Tailwind CSS v4.
-- **Responsive Layout:** Ensures a consistent and user-friendly experience
-  across different screen sizes.
-- **Type-Safe:** Written entirely in TypeScript.
-- **Form Handling & Validation:** Robust input handling using React Hook Form
-  and Zod for schema validation.
-- **Client-Side Caching:** Efficient data fetching and state management with
-  TanStack Query (React Query).
-- **Theming:** Supports light and dark mode using `next-themes`.
-- **Internationalization (i18n):** Setup for multi-language support using
-  `next-intl`.
-- **User Feedback:** Uses `sonner` for toast notifications.
-- **Optimized Development:** Utilizes Next.js Turbopack (`--turbopack`) for
-  faster development builds.
+- **📹 Instagram Video Downloads:** Download Instagram videos in high quality MP4 format
+- **📸 Instagram Photo Downloads:** Download Instagram photos in high quality JPG format  
+- **🎠 Carousel Support:** Download multiple photos/videos from Instagram carousel posts
+- **📱 Instagram Reels:** Download Instagram Reels and short videos
+- **🌍 Multi-Language Support:** Available in 5 languages (English, Spanish, German, French, Russian)
+- **🎨 Modern UI Design:** Beautiful purple/pink gradient theme with glass morphism effects
+- **📱 Fully Responsive:** Optimized for desktop, tablet, and mobile devices
+- **🌙 Dark/Light Mode:** Automatic theme switching with user preference support
+- **⚡ Fast Performance:** Built with Next.js 15 and optimized for speed
+- **🔍 SEO Optimized:** Complete SEO implementation with structured data and sitemaps
+- **📝 Blog System:** Built-in blog for SEO content and user guides
+- **⚖️ Legal Compliance:** Complete legal framework with Privacy Policy, Terms of Service, etc.
+- **📊 Analytics Ready:** Google Analytics integration for tracking and insights
+- **🔧 Type-Safe:** Written entirely in TypeScript for better development experience
+- **📋 Paste Functionality:** One-click paste from clipboard for quick URL input
+- **🎯 Form Validation:** Robust input validation using React Hook Form and Zod
+- **🚀 Modern Tech Stack:** Next.js 15, React 19, Tailwind CSS v4, Shadcn/ui components
 
 ## 📚 Educational Goals
 

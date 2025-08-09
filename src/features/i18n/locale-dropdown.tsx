@@ -14,7 +14,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-import { CheckCheck, Globe } from "lucide-react";
+import { CheckCheck, Languages } from "lucide-react";
 
 import { Locale } from "./types";
 
@@ -37,6 +37,9 @@ export function LocaleDropdown({ className, ...props }: LocaleSwitcherProps) {
     clientJar.locale.set(newLocale);
 
     startTransition(() => {
+      // Force a navigation to the same page to trigger re-rendering with new locale
+      const currentPath = window.location.pathname;
+      router.push(currentPath);
       router.refresh();
     });
   };
@@ -50,7 +53,7 @@ export function LocaleDropdown({ className, ...props }: LocaleSwitcherProps) {
           className={cn("h-9 w-9", className)}
           {...props}
         >
-          <Globe className="h-[1.2rem] w-[1.2rem]" />
+          <Languages className="h-[1.2rem] w-[1.2rem]" />
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>

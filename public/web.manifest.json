@@ -1,6 +1,6 @@
 {
-  "name": "Gram Grabberz",
-  "short_name": "GramGrabberz",
+  "name": "ReelGrabber",
+  "short_name": "ReelGrabber",
   "description": "Fast, free, and no login required. Just paste the URL and download.",
   "start_url": "/",
   "display": "standalone",

@@ -1,24 +1,24 @@
 {
   "title": "Gram Grabberz",
-  "description": "Fast, free, and no login required. Just paste the URL and download.",
+  "description": "Fast, free, and no login required. Download Instagram photos and videos instantly.",
   "hero": {
-    "title": "Download Instagram Videos in Seconds",
-    "description": "Fast, free, and no login required. Just paste the URL and download.",
+    "title": "Download Instagram Photos & Videos in Seconds",
+    "description": "Fast, free, and no login required. Download single posts, carousels, videos, and photos instantly.",
     "form": {
-      "placeholder": "Paste Instagram video URL here...",
+      "placeholder": "Paste Instagram post URL here...",
       "button": "Download"
     },
-    "formHint": "Works with Instagram posts, reels, and stories",
+    "formHint": "Works with Instagram posts, reels, photos, and carousels",
     "learnMore": "Learn how it works"
   },
   "features": {
     "badge": "Why Choose Us",
     "title": "Powerful Features",
-    "description": "Everything you need to download Instagram videos quickly and easily",
+    "description": "Everything you need to download Instagram photos and videos quickly and easily",
     "cards": {
       "free": {
         "title": "100% Free",
-        "description": "No hidden fees, subscriptions, or limits. Download unlimited videos without paying a cent."
+        "description": "No hidden fees, subscriptions, or limits. Download unlimited photos and videos without paying a cent."
       },
       "noRegistration": {
         "title": "No Registration",
@@ -26,23 +26,23 @@
       },
       "fast": {
         "title": "Lightning Fast",
-        "description": "Our optimized servers process your requests instantly, delivering videos in seconds, not minutes."
+        "description": "Our optimized servers process your requests instantly, delivering media in seconds, not minutes."
       },
       "hdQuality": {
         "title": "HD Quality",
-        "description": "Download videos in the highest quality available, preserving the original resolution and clarity."
+        "description": "Download photos and videos in the highest quality available, preserving the original resolution and clarity."
       }
     }
   },
   "howItWorks": {
     "badge": "Simple Process",
     "title": "How It Works",
-    "description": "Download Instagram videos in three simple steps",
+    "description": "Download Instagram photos and videos in three simple steps",
     "steps": {
       "copy": {
         "title": "Copy URL",
-        "descriptionDesktop": "Find the Instagram video you want and copy its URL from the address bar or share menu",
-        "descriptionMobile": "Find the Instagram video you want and copy its URL"
+        "descriptionDesktop": "Find the Instagram post you want and copy its URL from the address bar or share menu",
+        "descriptionMobile": "Find the Instagram post you want and copy its URL"
       },
       "paste": {
         "title": "Paste URL",
@@ -51,15 +51,15 @@
       },
       "download": {
         "title": "Download",
-        "descriptionDesktop": "Click the download button and your video will be saved directly to your device",
-        "descriptionMobile": "Click download and save the video to your device"
+        "descriptionDesktop": "Click the download button and your photos/videos will be saved directly to your device",
+        "descriptionMobile": "Click download and save the media to your device"
       }
     },
     "ctaButton": "Try It Now"
   },
   "testimonials": {
     "title": "Trusted by Thousands",
-    "description": "Join thousands of satisfied users who download Instagram videos every day",
+    "description": "Join thousands of satisfied users who download Instagram media every day",
     "stats": {
       "downloads": "Daily Downloads",
       "users": "Happy Users",

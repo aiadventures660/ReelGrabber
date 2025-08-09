@@ -48,6 +48,28 @@ export type XdtShortcodeMediaDto = {
   like_and_view_counts_disabled: boolean;
   edge_media_to_parent_comment: EdgeMediaToParentCommentClassDto;
   edge_media_to_hoisted_comment: EdgeMediaToCaptionClassDto;
+  // Add support for carousel posts
+  edge_sidecar_to_children?: EdgeSidecarToChildrenDto;
+  edge_media_preview_comment: EdgeMediaPreviewDto;
+  comments_disabled: boolean;
+  commenting_disabled_for_viewer: boolean;
+  taken_at_timestamp: number;
+  edge_media_preview_like: EdgeMediaPreviewDto;
+  edge_media_to_sponsor_user: EdgeMediaToCaptionClassDto;
+  is_affiliate: boolean;
+  is_paid_partnership: boolean;
+  location: null;
+  nft_asset_info: null;
+  viewer_has_liked: boolean;
+  viewer_has_saved: boolean;
+  viewer_has_saved_to_collection: boolean;
+  viewer_in_photo_of_you: boolean;
+  viewer_can_reshare: boolean;
+  is_ad: boolean;
+  edge_web_media_to_related_media: EdgeMediaToCaptionClassDto;
+  coauthor_producers: any[];
+  pinned_for_users: any[];
+};
   edge_media_preview_comment: EdgeMediaPreviewDto;
   comments_disabled: boolean;
   commenting_disabled_for_viewer: boolean;
@@ -178,4 +200,26 @@ export type SharingFrictionInfoDto = {
 
 export type ExtensionsDto = {
   is_final: boolean;
+};
+
+// Additional types for carousel/sidecar posts
+export type EdgeSidecarToChildrenDto = {
+  edges: SidecarChildEdgeDto[];
+};
+
+export type SidecarChildEdgeDto = {
+  node: SidecarChildNodeDto;
+};
+
+export type SidecarChildNodeDto = {
+  __typename: string;
+  id: string;
+  shortcode: string;
+  dimensions: DimensionsDto;
+  display_url: string;
+  display_resources: DisplayResourceDto[];
+  is_video: boolean;
+  video_url?: string;
+  accessibility_caption: string | null;
+  edge_media_to_tagged_user: EdgeMediaToCaptionClassDto;
 };

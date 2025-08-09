@@ -20,7 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { Download, Loader2, X } from "lucide-react";
+import { Download, Loader2, X, Clipboard } from "lucide-react";
 
 import { cn, getPostShortcode, isShortcodePresent } from "@/lib/utils";
 import { useGetInstagramPostMutation } from "@/features/react-query/mutations/instagram";
@@ -49,16 +49,18 @@ const useFormSchema = () => {
   });
 };
 
-function triggerDownload(videoUrl: string) {
+function triggerDownload(url: string, isVideo: boolean = true, index?: number) {
   // Ensure we are in a browser environment
   if (typeof window === "undefined") return;
 
   const randomTime = new Date().getTime().toString().slice(-8);
-  const filename = `gram-grabberz-${randomTime}.mp-4`;
+  const extension = isVideo ? "mp4" : "jpg";
+  const indexSuffix = index !== undefined ? `-${index + 1}` : "";
+  const filename = `reelgrabber.app-${randomTime}${indexSuffix}.${extension}`;
 
   // Construct the URL to your proxy API route
-  const proxyUrl = new URL("/api/download-proxy", window.location.origin); // Use relative path + origin
-  proxyUrl.searchParams.append("url", videoUrl);
+  const proxyUrl = new URL("/api/download-proxy", window.location.origin);
+  proxyUrl.searchParams.append("url", url);
   proxyUrl.searchParams.append("filename", filename);
 
   console.log("Using proxy URL:", proxyUrl.toString()); // For debugging
@@ -113,14 +115,31 @@ export function InstagramForm(props: { className?: string }) {
   });
 
   const errorMessage = form.formState.errors.url?.message;
+  const urlValue = form.watch("url");
 
-  const isDisabled = isPending || !form.formState.isDirty;
-  const isShowClearButton = form.watch("url").length > 0;
+  const isDisabled = isPending || (!form.formState.isDirty && !urlValue.trim());
+  const isShowClearButton = urlValue.length > 0;
 
   function clearUrlField() {
-    form.setValue("url", "");
+    form.setValue("url", "", { shouldDirty: false });
     form.clearErrors("url");
     inputRef.current?.focus();
+  }
+
+  async function pasteFromClipboard() {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (text) {
+        form.setValue("url", text, { shouldDirty: true, shouldValidate: true });
+        form.clearErrors("url");
+      }
+    } catch (error) {
+      console.error("Failed to read clipboard:", error);
+      toast.error("Failed to paste from clipboard", {
+        position: "top-center",
+        duration: 2000,
+      });
+    }
   }
 
   function setCachedUrl(
@@ -168,8 +187,10 @@ export function InstagramForm(props: { className?: string }) {
       return;
     }
 
-    if (cachedUrl?.videoUrl) {
-      triggerDownload(cachedUrl.videoUrl);
+    // For cached single media, re-download
+    if (cachedUrl?.videoUrl && !cachedUrl.videoUrl.includes(" files")) {
+      const isVideo = cachedUrl.videoUrl.includes('.mp4') || cachedUrl.videoUrl.includes('video');
+      triggerDownload(cachedUrl.videoUrl, isVideo);
       return;
     }
 
@@ -177,17 +198,53 @@ export function InstagramForm(props: { className?: string }) {
       const { data, status } = await getInstagramPost({ shortcode });
 
       if (status === HTTP_CODE_ENUM.OK) {
-        const downloadUrl = data.data.xdt_shortcode_media.video_url;
-        if (downloadUrl) {
-          triggerDownload(downloadUrl);
-          setCachedUrl(shortcode, downloadUrl);
-          toast.success(t("toasts.success"), {
-            id: "toast-success",
-            position: "top-center",
-            duration: 1500,
-          });
-        } else {
-          throw new Error("Video URL not found");
+        const media = data.data.xdt_shortcode_media;
+        
+        // Handle carousel posts (multiple images/videos)
+        if ((media.__typename === "GraphSidecar" || media.__typename === "XDTGraphSidecar") && media.edge_sidecar_to_children) {
+          const children = media.edge_sidecar_to_children.edges;
+          let downloadCount = 0;
+          
+          for (let i = 0; i < children.length; i++) {
+            const child = children[i].node;
+            const downloadUrl = child.is_video ? child.video_url : child.display_url;
+            
+            if (downloadUrl) {
+              // Add a small delay between downloads to avoid overwhelming the browser
+              setTimeout(() => {
+                triggerDownload(downloadUrl, child.is_video, i);
+              }, i * 500); // 500ms delay between each download
+              downloadCount++;
+            }
+          }
+          
+          if (downloadCount > 0) {
+            setCachedUrl(shortcode, `${downloadCount} files`);
+            toast.success(t("toasts.success") + ` (${downloadCount} files)`, {
+              id: "toast-success",
+              position: "top-center",
+              duration: 2000,
+            });
+          } else {
+            throw new Error("No downloadable media found");
+          }
+        } 
+        // Handle single media posts (video or photo)
+        else {
+          const downloadUrl = media.is_video ? media.video_url : media.display_url;
+          
+          if (downloadUrl) {
+            triggerDownload(downloadUrl, media.is_video);
+            setCachedUrl(shortcode, downloadUrl);
+            const mediaType = media.is_video ? "video" : "photo";
+            toast.success(t("toasts.success") + ` (${mediaType})`, {
+              id: "toast-success",
+              position: "top-center",
+              duration: 1500,
+            });
+          } else {
+            throw new Error("Media URL not found");
+          }
         }
       } else if (
         status === HTTP_CODE_ENUM.NOT_FOUND ||
@@ -223,16 +280,16 @@ export function InstagramForm(props: { className?: string }) {
   }, []);
 
   return (
-    <div className={cn("w-full space-y-2", props.className)}>
+    <div className={cn("w-full space-y-4", props.className)}>
       {errorMessage ? (
-        <p className="h-4 text-sm text-red-500 sm:text-start">{errorMessage}</p>
+        <p className="text-sm text-red-500 sm:text-start bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-2 border border-red-200 dark:border-red-800">{errorMessage}</p>
       ) : (
-        <div className="h-4"></div>
+        <div className="h-1"></div>
       )}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex w-full flex-col gap-2 sm:flex-row sm:items-end"
+          className="space-y-4"
         >
           <FormField
             control={form.control}
@@ -252,17 +309,34 @@ export function InstagramForm(props: { className?: string }) {
                       minLength={1}
                       maxLength={255}
                       placeholder={t("inputs.url.placeholder")}
+                      className="h-14 bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-400 focus:ring-purple-400/20 rounded-2xl text-lg placeholder:text-gray-400 pr-20 shadow-lg transition-all duration-200 hover:shadow-xl dark:bg-gray-800/80 dark:border-purple-700 dark:focus:border-purple-500"
                     />
-                    {isShowClearButton && (
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        onClick={clearUrlField}
-                        className="absolute top-1/2 right-2 h-4 w-4 -translate-y-1/2 cursor-pointer"
-                      >
-                        <X className="text-red-500" />
-                      </Button>
-                    )}
+                    <div className="absolute top-1/2 right-2 -translate-y-1/2 flex gap-1">
+                      {!isShowClearButton && (
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          type="button"
+                          onClick={pasteFromClipboard}
+                          className="h-8 w-8 rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors duration-200"
+                          title="Paste from clipboard"
+                        >
+                          <Clipboard className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                        </Button>
+                      )}
+                      {isShowClearButton && (
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          type="button"
+                          onClick={clearUrlField}
+                          className="h-8 w-8 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors duration-200"
+                          title="Clear input"
+                        >
+                          <X className="h-4 w-4 text-red-500" />
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </FormControl>
               </FormItem>
@@ -271,18 +345,26 @@ export function InstagramForm(props: { className?: string }) {
           <Button
             disabled={isDisabled}
             type="submit"
-            className="bg-teal-500 text-white hover:bg-teal-600 dark:bg-teal-700 dark:hover:bg-teal-600"
+            size="lg"
+            className="w-full h-14 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02] text-lg"
           >
             {isPending ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                Processing...
+              </>
             ) : (
-              <Download className="h-4 w-4" />
+              <>
+                <Download className="mr-2 h-5 w-5" />
+                {t("submit")}
+              </>
             )}
-            {t("submit")}
           </Button>
         </form>
       </Form>
-      <p className="text-muted-foreground text-center text-xs">{t("hint")}</p>
+      <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+        {t("hint")}
+      </p>
     </div>
   );
 }

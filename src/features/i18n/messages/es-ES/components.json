@@ -12,6 +12,7 @@
     },
     "serverErrors": {
       "notFound": "No se encontró la publicación que estás buscando",
+      "postNotAccessible": "Esta publicación no es accesible. Puede ser privada, eliminada o no tener permisos para verla.",
       "notVideo": "Esta publicación no contiene un video",
       "tooManyRequests": "Demasiadas solicitudes, por favor intenta de nuevo más tarde",
       "serverError": "El servidor no está disponible, por favor intenta de nuevo más tarde"

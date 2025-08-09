@@ -3,11 +3,11 @@ import React from "react";
 export const MOBILE_BREAKPOINT = 768;
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
-    undefined
-  );
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+  const [hasMounted, setHasMounted] = React.useState(false);
 
   React.useEffect(() => {
+    setHasMounted(true);
     const controller = new AbortController();
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
     const onChange = () => {
@@ -20,5 +20,6 @@ export function useIsMobile() {
     };
   }, []);
 
-  return !!isMobile;
+  // Return false on server-side and until mounted on client
+  return hasMounted ? isMobile : false;
 }

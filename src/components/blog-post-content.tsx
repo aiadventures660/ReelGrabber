@@ -42,7 +42,7 @@ export function BlogPostContent() {
   }
 
   // Dynamic content based on post and locale
-  const getBlogContent = (_post: BlogPost) => {
+  const getBlogContent = () => {
     return (
       <div className="prose prose-lg max-w-none">
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg dark:bg-gray-800/80 mb-8">
@@ -125,7 +125,7 @@ export function BlogPostContent() {
 
       {/* Article Content */}
       <article>
-        {getBlogContent(post)}
+        {getBlogContent()}
       </article>
     </>
   );

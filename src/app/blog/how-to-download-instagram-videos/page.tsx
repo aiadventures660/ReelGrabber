@@ -56,7 +56,7 @@ export default function HowToDownloadInstagramVideos() {
         <article className="prose prose-lg max-w-none">
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg dark:bg-gray-800/80 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              What You'll Learn
+              What You&apos;ll Learn
             </h2>
             <ul className="space-y-2 text-gray-600 dark:text-gray-300">
               <li className="flex items-center gap-2">

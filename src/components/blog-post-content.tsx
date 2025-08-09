@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Download } from "lucide-react";
-import { getBlogPostsByLocale, BlogPost } from "@/lib/blog-data";
+import { getBlogPostsByLocale } from "@/lib/blog-data";
 
 export function BlogPostContent() {
   const params = useParams();

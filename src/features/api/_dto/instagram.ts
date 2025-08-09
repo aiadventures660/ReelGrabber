@@ -70,26 +70,6 @@ export type XdtShortcodeMediaDto = {
   coauthor_producers: any[];
   pinned_for_users: any[];
 };
-  edge_media_preview_comment: EdgeMediaPreviewDto;
-  comments_disabled: boolean;
-  commenting_disabled_for_viewer: boolean;
-  taken_at_timestamp: number;
-  edge_media_preview_like: EdgeMediaPreviewDto;
-  edge_media_to_sponsor_user: EdgeMediaToCaptionClassDto;
-  is_affiliate: boolean;
-  is_paid_partnership: boolean;
-  location: null;
-  nft_asset_info: null;
-  viewer_has_liked: boolean;
-  viewer_has_saved: boolean;
-  viewer_has_saved_to_collection: boolean;
-  viewer_in_photo_of_you: boolean;
-  viewer_can_reshare: boolean;
-  is_ad: boolean;
-  edge_web_media_to_related_media: EdgeMediaToCaptionClassDto;
-  coauthor_producers: Array<any>;
-  pinned_for_users: Array<any>;
-};
 
 export type ClipsMusicAttributionInfoDto = {
   artist_name: string;

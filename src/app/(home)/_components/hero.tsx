@@ -41,6 +41,11 @@ export function Hero() {
             </p>
           </div>
 
+          {/* Form */}
+          <div className="w-full max-w-2xl">
+            <InstagramForm className="w-full" />
+          </div>
+
           {/* Feature highlights */}
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
             <div className="flex items-center gap-2 rounded-lg bg-white/60 px-3 py-2 shadow-sm dark:bg-gray-800/60">
@@ -55,11 +60,6 @@ export function Hero() {
               <Sparkles className="h-4 w-4 text-pink-500" />
               No Registration
             </div>
-          </div>
-
-          {/* Form */}
-          <div className="w-full max-w-2xl">
-            <InstagramForm className="w-full" />
           </div>
 
           {/* Learn more */}

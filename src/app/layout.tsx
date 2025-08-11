@@ -52,6 +52,9 @@ export default async function RootLayout({
           `}
         </Script>
         <StructuredData />
+        
+        {/* Google Site Verification */}
+        <meta name="google-site-verification" content="iVoqOUbUWKQfmDQqKvZzxhkSWcpofC3MB9ziFEiKoX0" />
       </head>
       <body className={cn("antialiased", geistSans.className)} suppressHydrationWarning>
         <LocaleProvider locale={locale} messages={messages}>

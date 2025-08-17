@@ -2,15 +2,15 @@ import { Metadata } from "next";
 
 export const siteConfig = {
   name: "ReelGrabber",
-  domain: "reel-grabber.vercel.com",
+  domain: "reelgrabber.app",
   shortName: "ReelGrabber",
-  creator: "riad-azz",
+  creator: "Pankaj-Singh",
   description:
-    "Free Instagram video downloader - Download Instagram videos, photos, reels, and stories instantly. No login required, fast and secure. Works on all devices.",
+    "Download Instagram Videos, Reels, Photos & Stories for Free – Fast, Secure & No Login Required",
   ogDescription:
     "Download Instagram content instantly - videos, photos, reels & stories. Free, fast, secure. No registration required.",
-  keywords: "instagram video downloader, download instagram videos, instagram photo downloader, reel downloader, instagram story downloader, free video downloader, instagram media downloader",
-  url: "https://reel-grabber.vercel.com",
+  keywords: "instagram video downloader, download instagram videos, instagram downloader, instagram reel downloader, instagram story downloader, instagram photo downloader, free instagram downloader, online instagram downloader, instagram content downloader",
+  url: "https://reelgrabber.app",
 };
 
 export const siteMetadata: Metadata = {
